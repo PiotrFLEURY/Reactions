@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="4sp"
+    app:cardCornerRadius="4sp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?selectableItemBackgroundBorderless"
+        android:animateLayoutChanges="true">
+
+        <TextView
+            android:id="@+id/text_rule_item"
+            android:orientation="vertical"
+            android:layout_width="120sp"
+            android:layout_height="120sp"
+            android:tint="@android:color/white"
+            android:gravity="bottom|center_horizontal"
+            android:padding="16sp"
+            android:drawableTop="@drawable/ic_charge"
+            android:drawableTint="@color/blue500"
+            android:text="@string/ChargeEventName"/>
+
+        <ImageView
+            android:id="@+id/checked_rule_item"
+            android:layout_margin="4sp"
+            android:layout_width="16sp"
+            android:layout_height="16sp"
+            android:layout_gravity="top|end"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            android:src="@drawable/checked"/>
+
+    </FrameLayout>
+
+
+</android.support.v7.widget.CardView>

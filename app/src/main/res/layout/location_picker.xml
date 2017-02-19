@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16sp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:text="@string/address_search"/>
+
+    <EditText
+        android:id="@+id/location_picker_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/type_address_name"/>
+
+    <ProgressBar
+        android:id="@+id/location_picker_progress"
+        android:layout_width="16sp"
+        android:layout_height="16sp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/location_picker_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceSmall"
+        tools:text="25 rue du petit chemin (123;456)"/>
+
+    <ImageButton
+        android:id="@+id/location_picker_btn"
+        android:layout_gravity="end"
+        android:layout_width="120sp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_accept"/>
+
+</LinearLayout>

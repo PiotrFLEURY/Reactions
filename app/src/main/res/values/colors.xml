@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#303F9F</color>
+    <color name="colorPrimaryDark">#1A237E</color>
+    <color name="colorAccent">#4CAF50</color>
+
+    <!-- green -->
+    <color name="green500">#4CAF50</color>
+    <color name="greenA200">#69F0AE</color>
+
+    <!-- light blue -->
+    <color name="lightblue500">#03A9F4</color>
+    <color name="lightblue800">#0277BD</color>
+
+    <!-- teal -->
+    <color name="teal500">#009688</color>
+    <color name="teal700">#00796B</color>
+    <color name="tealA700">#00BFA5</color>
+
+    <!-- orange -->
+    <color name="orangeA200">#FFAB40</color>
+
+    <!-- blue grey -->
+    <color name="bluegrey500">#607D8B</color>
+    <color name="bluegrey700">#455A64</color>
+
+    <!-- blue -->
+    <color name="blue500">#2196F3</color>
+    <color name="blue700">#1976D2</color>
+
+    <!-- indigo -->
+    <color name="indigo500">#3F51B5</color>
+    <color name="indigo700">#303F9F</color>
+    <color name="indigo900">#1A237E</color>
+
+    <!--grey -->
+    <color name="grey100">#F5F5F5</color>
+    <color name="grey200">#EEEEEE</color>
+</resources>

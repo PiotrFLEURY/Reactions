@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/heart.xml -->
+<!-- intrinsic size of the drawable -->
+<!-- size of the virtual canvas -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="256dp"
+    android:width="256dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+
+    <!-- draw a path -->
+    <!--<path android:fillColor="#8fff"-->
+        <!--android:pathData="M20.5,9.5-->
+                        <!--c-1.955,0,-3.83,1.268,-4.5,3-->
+                        <!--c-0.67,-1.732,-2.547,-3,-4.5,-3-->
+                        <!--C8.957,9.5,7,11.432,7,14-->
+                        <!--c0,3.53,3.793,6.257,9,11.5-->
+                        <!--c5.207,-5.242,9,-7.97,9,-11.5-->
+                        <!--C25,11.432,23.043,9.5,20.5,9.5z" />-->
+
+    <path android:fillColor="@android:color/white"
+        android:pathData="M4,4
+                        L28,4
+                        L28,8
+                        L4,8
+                        M4,12
+                        L28,12
+                        L28,16
+                        L4,16
+                        M4,20
+                        L28,20
+                        L28,24
+                        L4,24" />
+</vector>

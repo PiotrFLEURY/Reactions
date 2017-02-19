@@ -1,0 +1,61 @@
+<resources>
+
+    <string name="app_name">Reactions</string>
+
+    <string name="DarknessSensorName">Dans l\'obscurité</string>
+    <string name="BrightnessSensorName">Dans la lumière</string>
+
+    <string name="ChargeEventName">Quand je branche mon chargeur</string>
+
+    <string name="ActivateRingtoneReactionName">Activer le mode sonnerie</string>
+    <string name="ActivateVibratorReactionName">Activer le mode vibreur</string>
+    <string name="MakeToastReactionnName">Afficher un message</string>
+    <string name="WakeUpScreenReactionName">Réveiller l\'écran</string>
+    <string name="edit_rule_event_title">Déclencheur</string>
+    <string name="edit_rule_reaction_title">Action</string>
+
+    <string name="notification_rule_fired">Règle déclenchée</string>
+    <string name="edit_rule_dialog_positive_button">Terminer</string>
+    <string name="PositionEventName">Quand je me trouve ici</string>
+    <string name="TimeEventName">En fonction de l\'heure</string>
+    <string name="current_location_saved">"Position actuelle enregistrée "</string>
+    <string name="ChangeRingtoneReactionName">Modifier ma sonnerie</string>
+    <string name="pickup_ringtone">Sélectionnez une sonnerie</string>
+
+    <string name="GoAirplaneModeReactionName">Passer en mode avion</string>
+    <string name="SetWallpaperReactionName">Changer mon fond d\'écran</string>
+    <string name="VibrateReactionName">Vibrer</string>
+    <string name="NotifyReactionName">Notification</string>
+    <string name="SendMailReactionName">Envoyer un email</string>
+
+    <string name="unexpected_error">Une erreur est survenue</string>
+    <string name="title_activity_edit_rule">Editer une règle</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="events">Evènements</string>
+    <string name="reactions">Réactions</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="confirm_delete_rule">Supprimer la règle ?</string>
+    <string name="confirm_delete_rule_title">Suppression</string>
+    <string name="confirm_delete_address">Supprimer l\'adresse ?</string>
+    <string name="confirm_delete_address_title">Suppression</string>
+    <string name="choose_event">Choisissez un évènement</string>
+    <string name="choose_reaction">Choisissez une réaction</string>
+    <string name="address_search">Rechercher une adresse</string>
+    <string name="type_address_name">Inscrivez une adresse</string>
+    <string name="validate">Valider</string>
+    <string name="kilometres">km</string>
+    <string name="metres">mètres</string>
+    <string name="mail_sender_subject">Reactions vous envoie un email</string>
+
+    <!-- menu drawer -->
+    <string name="drawer_title">Préférences</string>
+    <string name="menu_adresses">Mes adresses</string>
+
+    <!-- adresses -->
+    <string name="title_activity_address_list">Mes adresses</string>
+    <string name="title_activity_address_list_selection_mode">Choisissez une adresse</string>
+    <string name="SmsEventName">Quand je reçois un SMS qui contient</string>
+    <string name="SharePositionReactionName">Partager ma position par SMS à</string>
+</resources>

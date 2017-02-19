@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="120sp"
+    android:layout_height="120sp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        android:padding="16sp">
+
+        <ImageView
+            android:id="@+id/icon_rule_item"
+            android:layout_width="48sp"
+            android:layout_height="48sp"
+            android:layout_gravity="center"
+            android:layout_margin="4sp"
+            android:padding="8sp"
+            android:background="@drawable/rule_item_bg"
+            android:src="@drawable/ic_charge"/>
+
+        <TextView
+            android:id="@+id/text_rule_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/ChargeEventName"
+            android:textSize="11sp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/checked_rule_item"
+        android:layout_margin="4sp"
+        android:layout_width="16sp"
+        android:layout_height="16sp"
+        android:layout_gravity="top|end"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:src="@drawable/checked"/>
+
+</FrameLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="lightSensorDelay">300000</integer>
+    <string name="smtphost">smtp.orange.fr</string>
+    <string name="smtport">25</string>
+
+</resources>
