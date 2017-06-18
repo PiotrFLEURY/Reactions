@@ -85,7 +85,12 @@ public class MainActivity extends AppCompatActivity implements AppActions, Possi
         mNavigationView.setNavigationItemSelectedListener(this);
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        appBarLeftIcon.setOnClickListener(view -> toggleDrawer());
+        appBarLeftIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleDrawer();
+            }
+        });
 
         mainSwitch = (Switch) findViewById(R.id.main_switch);
         mainSwitch.setChecked(ReactionsService.running.get());
@@ -140,8 +145,18 @@ public class MainActivity extends AppCompatActivity implements AppActions, Possi
     @Override
     protected void onResume() {
         super.onResume();
-        mainSwitch.setOnClickListener(this::toggleService);
-        addReaction.setOnClickListener(this::addReaction);
+        mainSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toggleService(null);
+            }
+        });
+        addReaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addReaction(null);
+            }
+        });
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver, intentFilter);
         refresh();
     }

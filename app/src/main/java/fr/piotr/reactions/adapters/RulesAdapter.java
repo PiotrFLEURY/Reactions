@@ -73,9 +73,12 @@ public class RulesAdapter extends RecyclerView.Adapter<RulesAdapter.RuleViewHold
     @Override
     public void onBindViewHolder(RuleViewHolder holder, int position) {
 
-        Rule rule = mDataset.get(position);
-        holder.layout.setOnClickListener(view -> {
-            onItemClick(rule);
+        final Rule rule = mDataset.get(position);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick(rule);
+            }
         });
 
         ImageView ivRuleEventIcon = (ImageView) holder.layout.findViewById(R.id.rule_event_icon);
@@ -132,17 +135,23 @@ public class RulesAdapter extends RecyclerView.Adapter<RulesAdapter.RuleViewHold
         return event.getEventExtra();
     }
 
-    private void onItemClick(Rule rule) {
+    private void onItemClick(final Rule rule) {
         new AlertDialog.Builder(context)
                 .setTitle(R.string.confirm_delete_rule_title)
                 .setMessage(R.string.confirm_delete_rule)
-                .setPositiveButton(R.string.yes, (dialogInterface, i) -> {
-                    ReactionsApplication.getReactionsManager().remove(rule);
-                    mDataset = ReactionsApplication.getReactionsManager().getRules();
-                    notifyDataSetChanged();
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ReactionsApplication.getReactionsManager().remove(rule);
+                        mDataset = ReactionsApplication.getReactionsManager().getRules();
+                        notifyDataSetChanged();
+                    }
                 })
-        .setNegativeButton(R.string.no, (dialogInterface, i) -> {
-            //
+        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //
+            }
         }).show();
 
     }

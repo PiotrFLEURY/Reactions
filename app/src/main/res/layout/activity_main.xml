@@ -75,6 +75,7 @@
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
+        tools:listitem="@layout/rule"
         android:layout_height="match_parent"/>
 
     <android.support.design.widget.FloatingActionButton
@@ -82,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_add"
+        android:src="@drawable/ic_add_white_24dp"
         app:fabSize="normal"
         app:layout_anchor="@id/toolbar"
         app:layout_anchorGravity="bottom|right|end" />

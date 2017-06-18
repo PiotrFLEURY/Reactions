@@ -52,7 +52,7 @@ public class AddressListActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case EVENT_LOCATION_PICKED_UP:
-                    onAddressPickedUp(intent.getParcelableExtra(EXTRA_LOCATION_ADDRESS));
+                    onAddressPickedUp((Address) intent.getParcelableExtra(EXTRA_LOCATION_ADDRESS));
                     break;
                 case EVENT_LOCATION_SELECTED:
                     onLocationSelected(intent);

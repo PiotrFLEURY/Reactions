@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="8sp"
-    android:layout_margin="4sp">
+    android:layout_margin="4sp"
+    tools:showIn="@layout/activity_main">
 
     <LinearLayout
         android:orientation="vertical"
@@ -27,7 +28,7 @@
                 android:layout_width="24sp"
                 android:layout_height="24sp"
                 android:layout_margin="8sp"
-                android:src="@drawable/ic_brightness"/>
+                android:src="@drawable/ic_brightness_medium_white_24dp"/>
 
             <TextView
                 android:id="@+id/rule_event_name"
@@ -62,7 +63,7 @@
                 android:layout_height="24sp"
                 android:layout_margin="4sp"
                 android:tint="@color/bluegrey500"
-                android:src="@drawable/ic_vibrate"/>
+                android:src="@drawable/ic_vibration_white_24dp"/>
 
             <TextView
                 android:id="@+id/rule_reaction_name"

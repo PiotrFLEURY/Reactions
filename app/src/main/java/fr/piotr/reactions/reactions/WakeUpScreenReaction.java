@@ -34,7 +34,7 @@ public class WakeUpScreenReaction extends Reaction {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_screen_lock;
+        return R.drawable.ic_screen_lock_portrait_white_24dp;
     }
 
     @Override

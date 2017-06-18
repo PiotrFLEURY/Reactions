@@ -62,7 +62,13 @@ public class VibratorPatternPicker extends AlertDialog {
         });
 
         ivRing = (ImageView) mRootView.findViewById(R.id.vibrator_picker_ring);
-        ivRing.setOnTouchListener((view, motionEvent) -> onMotion(motionEvent));
+        ivRing.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                onMotion(event);
+                return true;
+            }
+        });
 
         ivAccept = (ImageView) mRootView.findViewById(R.id.vibrator_picker_accept);
         ivAccept.setOnClickListener(new View.OnClickListener() {

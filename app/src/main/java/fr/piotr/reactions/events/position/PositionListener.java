@@ -154,7 +154,7 @@ public class PositionListener implements Event, LocationListener {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_location;
+        return R.drawable.ic_location_on_white_24dp;
     }
 
     @Override

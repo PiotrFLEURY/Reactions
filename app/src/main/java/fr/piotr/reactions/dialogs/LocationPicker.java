@@ -80,7 +80,7 @@ public class LocationPicker extends AlertDialog {
     }
 
     private void setButtonSearchMode() {
-        button.setImageResource(R.drawable.ic_search);
+        button.setImageResource(R.drawable.ic_search_white_24dp);
         button.setColorFilter(R.color.green500);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +130,7 @@ public class LocationPicker extends AlertDialog {
     }
 
     private void setButtonValidateMode() {
-        button.setImageResource(R.drawable.ic_accept);
+        button.setImageResource(R.drawable.ic_check_white_24dp);
         button.setColorFilter(R.color.lightblue800);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

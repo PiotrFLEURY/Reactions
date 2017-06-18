@@ -24,9 +24,12 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +40,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.UUID;
@@ -162,13 +166,18 @@ public class EditRuleActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        PageChangeListener pageChangeListener = new PageChangeListener();
+        final PageChangeListener pageChangeListener = new PageChangeListener();
         mViewPager.addOnPageChangeListener(pageChangeListener);
 
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setImageResource(R.drawable.ic_next);
-        fab.setOnClickListener(view -> onFlatButtonClick(view, pageChangeListener));
+        fab.setImageResource(R.drawable.ic_skip_next_white_24dp);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onFlatButtonClick(v, pageChangeListener);
+            }
+        });
 
         builder=new RuleBuilder(EditRuleActivity.this);
 
@@ -233,7 +242,7 @@ public class EditRuleActivity extends AppCompatActivity {
 
     private void pickupPhoneNumber() {
         if(!requestWriteSmsPermission()) {
-            EditText etMessageText = new EditText(this);
+            final EditText etMessageText = new EditText(this);
             etMessageText.setInputType(InputType.TYPE_CLASS_PHONE);
             new AlertDialog.Builder(this).setView(etMessageText).setPositiveButton(R.string.validate, new DialogInterface.OnClickListener() {
                 @Override
@@ -250,7 +259,7 @@ public class EditRuleActivity extends AppCompatActivity {
 
     private void pickupMailMessage() {
         if(!requestGetAccountPermission()){
-            EditText message = new EditText(this);
+            final EditText message = new EditText(this);
             new AlertDialog.Builder(this).setView(message).setPositiveButton(R.string.validate, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -271,8 +280,13 @@ public class EditRuleActivity extends AppCompatActivity {
     }
 
     private void pickupPattern() {
-        VibratorPatternPicker vibratorPatternPicker = new VibratorPatternPicker(this);
-        vibratorPatternPicker.setOnDismissListener(dialogInterface -> builder.setPickedPattern(vibratorPatternPicker.getPattern()));
+        final VibratorPatternPicker vibratorPatternPicker = new VibratorPatternPicker(this);
+        vibratorPatternPicker.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                builder.setPickedPattern(vibratorPatternPicker.getPattern());
+            }
+        });
         vibratorPatternPicker.show();
     }
 
@@ -295,7 +309,7 @@ public class EditRuleActivity extends AppCompatActivity {
 
     private void pickupText() {
         if(!requestReadSmsPermission()) {
-            EditText etMessageText = new EditText(this);
+            final EditText etMessageText = new EditText(this);
             new AlertDialog.Builder(this).setView(etMessageText).setPositiveButton(R.string.validate, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -485,9 +499,9 @@ public class EditRuleActivity extends AppCompatActivity {
 
     public void onPageChanged(int position){
         if(position==0){
-            fab.setImageResource(R.drawable.ic_next);
+            fab.setImageResource(R.drawable.ic_skip_next_white_24dp);
         } else {
-            fab.setImageResource(R.drawable.ic_check);
+            fab.setImageResource(R.drawable.ic_check_white_24dp);
         }
     }
 
@@ -546,56 +560,67 @@ public class EditRuleActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_edit_rule, container, false);
             TextView title = (TextView) rootView.findViewById(R.id.edit_rule_page_title);
-            GridView grid = (GridView) rootView.findViewById(R.id.edit_rule_grid);
+            RecyclerView list = (RecyclerView) rootView.findViewById(R.id.edit_rule_list);
+            list.setHasFixedSize(true);
+            list.setLayoutManager(new LinearLayoutManager(getActivity()));
             if(getArguments().getInt(ARG_SECTION_NUMBER)==1){
                 title.setText(R.string.events);
-                grid.setAdapter(new RuleEventAdapter());
+                list.setAdapter(new RuleEventAdapter());
             } else {
                 title.setText(R.string.reactions);
-                grid.setAdapter(new RuleReactionAdapter());
+                list.setAdapter(new RuleReactionAdapter());
             }
             return rootView;
         }
     }
 
-    private static class RuleEventAdapter extends BaseAdapter {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        // each data item is just a string in this case
+        public View layout;
+        public ViewHolder(View layout) {
+            super(layout);
+            this.layout = layout;
+        }
+    }
 
-        private FrameLayout lastView;
+    private static class RuleEventAdapter extends RecyclerView.Adapter<ViewHolder> {
+
+        private LinearLayout lastView;
         private EventsRegistry[] events = EventsRegistry.values();
 
         @Override
-        public int getCount() {
-            return events.length;
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.rule_grid_item, null, false));
         }
 
         @Override
-        public EventsRegistry getItem(int i) {
-            return events[i];
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            EventsRegistry item = getItem(i);
-            Context context = viewGroup.getContext();
-            if(view==null) {
-                view = LayoutInflater.from(context).inflate(R.layout.rule_grid_item, null, false);
-            }
-            view.setOnClickListener(view1 -> select((FrameLayout) view1, item));
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            final EventsRegistry item = getItem(position);
+            View view = holder.layout;
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    select((LinearLayout) v, item);
+                }
+            });
 
             ImageView icRuleItem = (ImageView) view.findViewById(R.id.icon_rule_item);
             icRuleItem.setImageResource(item.getIcon());
 
             TextView tvRuleItem = (TextView) view.findViewById(R.id.text_rule_item);
-            tvRuleItem.setText(context.getString(item.getLabel()));
-            return view;
+            tvRuleItem.setText(view.getContext().getString(item.getLabel()));
         }
 
-        private void select(FrameLayout view, EventsRegistry item) {
+        @Override
+        public int getItemCount() {
+            return events.length;
+        }
+
+        public EventsRegistry getItem(int i) {
+            return events[i];
+        }
+
+        private void select(LinearLayout view, EventsRegistry item) {
             if(lastView!=null) {
                 lastView.findViewById(R.id.checked_rule_item).setVisibility(View.INVISIBLE);
                 lastView.animate().scaleX(1f).scaleY(1f);
@@ -616,44 +641,44 @@ public class EditRuleActivity extends AppCompatActivity {
         mViewPager.setCurrentItem(1);
     }
 
-    private static class RuleReactionAdapter extends BaseAdapter {
+    private static class RuleReactionAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-        private FrameLayout lastView;
+        private LinearLayout lastView;
         private ReactionsRegistry[] events = ReactionsRegistry.values();
 
         @Override
-        public int getCount() {
+        public int getItemCount() {
             return events.length;
         }
 
-        @Override
         public ReactionsRegistry getItem(int i) {
             return events[i];
         }
 
         @Override
-        public long getItemId(int i) {
-            return i;
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.rule_grid_item, null, false));
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            ReactionsRegistry item = getItem(i);
-            Context context = viewGroup.getContext();
-            if(view==null) {
-                view = LayoutInflater.from(context).inflate(R.layout.rule_grid_item, null, false);
-            }
-            view.setOnClickListener(view1 -> select((FrameLayout) view1, item));
+        public void onBindViewHolder(ViewHolder holder, int position) {
+            final ReactionsRegistry item = getItem(position);
+            View view = holder.layout;
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    select((LinearLayout) v, item);
+                }
+            });
 
             ImageView icRuleItem = (ImageView) view.findViewById(R.id.icon_rule_item);
             icRuleItem.setImageResource(item.getIcon());
 
             TextView tvRuleItem = (TextView) view.findViewById(R.id.text_rule_item);
-            tvRuleItem.setText(context.getString(item.getLabel()));
-            return view;
+            tvRuleItem.setText(view.getContext().getString(item.getLabel()));
         }
 
-        private void select(FrameLayout view, ReactionsRegistry item) {
+        private void select(LinearLayout view, ReactionsRegistry item) {
             if(lastView!=null) {
                 lastView.findViewById(R.id.checked_rule_item).setVisibility(View.INVISIBLE);
                 lastView.animate().scaleX(1f).scaleY(1f);

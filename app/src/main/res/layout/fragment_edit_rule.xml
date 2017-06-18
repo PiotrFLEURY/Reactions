@@ -17,16 +17,10 @@
         android:textAppearance="?android:textAppearanceMedium"
         tools:text="@string/events"/>
 
-    <GridView
-        android:id="@+id/edit_rule_grid"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/edit_rule_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="48sp"
-        android:columnWidth="120sp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="8sp"
-        android:horizontalSpacing="8sp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"/>
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/rule_grid_item"/>
 
 </LinearLayout>

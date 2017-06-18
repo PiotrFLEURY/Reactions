@@ -52,14 +52,17 @@ public abstract class LightSensor implements SensorEventListener, Event, Seriali
     private void onValueChanged(float value) {
         if(!wasSatisfied && satisfied(value)) {
             unregister();
-            handler.postDelayed(() -> {
-                if(satisfied(lastValue)){
-                    react();
-                    wasSatisfied =true;
-                } else {
-                    wasSatisfied =false;
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if(satisfied(lastValue)){
+                        react();
+                        wasSatisfied =true;
+                    } else {
+                        wasSatisfied =false;
+                    }
+                    register();
                 }
-                register();
             }, getDelay());
         }
         if(wasSatisfied && !satisfied(value)) {
@@ -97,6 +100,6 @@ public abstract class LightSensor implements SensorEventListener, Event, Seriali
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_brightness;
+        return R.drawable.ic_brightness_medium_white_24dp;
     }
 }

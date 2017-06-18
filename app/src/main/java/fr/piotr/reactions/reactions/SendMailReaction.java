@@ -37,7 +37,7 @@ public class SendMailReaction extends Reaction {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_mail;
+        return R.drawable.ic_email_white_24dp;
     }
 
     @Override

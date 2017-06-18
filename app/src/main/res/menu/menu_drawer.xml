@@ -4,6 +4,6 @@
     <item
         android:id="@+id/drawer_menu_adresses"
         android:title="@string/menu_adresses"
-        android:icon="@drawable/ic_location"/>
+        android:icon="@drawable/ic_location_on_white_24dp"/>
 
 </menu>

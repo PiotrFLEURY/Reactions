@@ -42,7 +42,12 @@ public class RuleEditorDialog extends AlertDialog {
 
         setView(dialogLayout);
 
-        btnEnd.setOnClickListener(view1 -> onValidateRule());
+        btnEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onValidateRule();
+            }
+        });
     }
 
     private void onValidateRule() {

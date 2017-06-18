@@ -51,7 +51,7 @@ public class ChangeRingtoneReaction extends Reaction {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_musique_list;
+        return R.drawable.ic_queue_music_white_24dp;
     }
 
     @Override

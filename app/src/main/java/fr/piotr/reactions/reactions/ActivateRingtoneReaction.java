@@ -31,7 +31,7 @@ public class ActivateRingtoneReaction extends Reaction {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_musique;
+        return R.drawable.ic_music_note_white_24dp;
     }
 
     @Override

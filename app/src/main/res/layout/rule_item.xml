@@ -22,7 +22,7 @@
             android:tint="@android:color/white"
             android:gravity="bottom|center_horizontal"
             android:padding="16sp"
-            android:drawableTop="@drawable/ic_charge"
+            android:drawableTop="@drawable/ic_battery_charging_full_white_24dp"
             android:drawableTint="@color/blue500"
             android:text="@string/ChargeEventName"/>
 
@@ -34,7 +34,7 @@
             android:layout_gravity="top|end"
             android:visibility="invisible"
             tools:visibility="visible"
-            android:src="@drawable/checked"/>
+            android:src="@drawable/ic_check_white_24dp"/>
 
     </FrameLayout>
 

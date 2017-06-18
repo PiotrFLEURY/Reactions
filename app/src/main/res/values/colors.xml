@@ -36,4 +36,5 @@
     <!--grey -->
     <color name="grey100">#F5F5F5</color>
     <color name="grey200">#EEEEEE</color>
+    <color name="grey400">#bdbdbd</color>
 </resources>

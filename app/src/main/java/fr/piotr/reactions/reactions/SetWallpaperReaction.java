@@ -62,7 +62,7 @@ public class SetWallpaperReaction extends Reaction {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_wallpaper;
+        return R.drawable.ic_wallpaper_white_24dp;
     }
 
     @Override

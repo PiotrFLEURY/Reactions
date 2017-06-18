@@ -34,7 +34,7 @@ public class VibrateReaction extends Reaction {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_vibrate;
+        return R.drawable.ic_vibration_white_24dp;
     }
 
     @Override

@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:tint="@color/teal500"
             android:padding="16sp"
-            android:src="@drawable/ic_location"/>
+            android:src="@drawable/ic_location_on_white_24dp"/>
 
         <TextView
             android:id="@+id/tv_address"

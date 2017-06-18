@@ -17,6 +17,6 @@ import fr.piotr.reactions.registry.EventsRegistry;
 public class ChargeEvent extends ReactionReceiver {
 
     public ChargeEvent(Reaction reaction, Context context) {
-        super(EventsRegistry.CHARGE.getEventId(), EventsRegistry.CHARGE.getLabel(), R.drawable.ic_charge, reaction, new IntentFilter(Intent.ACTION_POWER_CONNECTED), context);
+        super(EventsRegistry.CHARGE.getEventId(), EventsRegistry.CHARGE.getLabel(), R.drawable.ic_battery_charging_full_white_24dp, reaction, new IntentFilter(Intent.ACTION_POWER_CONNECTED), context);
     }
 }

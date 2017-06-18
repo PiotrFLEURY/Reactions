@@ -115,7 +115,7 @@ public class TimeEvent implements Event {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_time;
+        return R.drawable.ic_access_time_white_24dp;
     }
 
     @Override

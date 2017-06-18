@@ -81,7 +81,7 @@ public class SmsEvent extends BroadcastReceiver implements Event{
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_sms;
+        return R.drawable.ic_sms_white_24dp;
     }
 
     @Override

@@ -16,7 +16,7 @@ import fr.piotr.reactions.persistence.AddressReference;
 
 public class AddressManager {
 
-    Context context;
+    private Context context;
     private AddressDAO addressDAO;
 
     private List<AddressReference> addressReferences;

@@ -2,6 +2,7 @@ package fr.piotr.reactions.adapters;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
@@ -64,9 +65,13 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
     @Override
     public void onBindViewHolder(AddressViewHolder holder, int position) {
 
-        AddressReference addressReference = mDataset.get(position);
-        holder.layout.setOnClickListener(view -> {
-            onItemClick(addressReference);
+        final AddressReference addressReference = mDataset.get(position);
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick(addressReference);
+            }
+
         });
 
         TextView tvAddress = (TextView) holder.layout.findViewById(R.id.tv_address);
@@ -74,7 +79,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
         tvAddress.setText(LocationConverter.asDisplayAddress(context, addressReference.getAddress(), currentLocation));
     }
 
-    private void onItemClick(AddressReference addressReference) {
+    private void onItemClick(final AddressReference addressReference) {
         if(selectionMode){
             Intent intent = new Intent(AddressListActivity.EVENT_LOCATION_SELECTED);
             intent.putExtra(AddressListActivity.EXTRA_LOCATION_UUID, addressReference.getId().toString());
@@ -83,12 +88,18 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
             new AlertDialog.Builder(context)
                     .setTitle(R.string.confirm_delete_address_title)
                     .setMessage(R.string.confirm_delete_address)
-                    .setPositiveButton(R.string.yes, (dialogInterface, i) -> {
-                        ReactionsApplication.getAddressManager().remove(addressReference);
-                        refresh();
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ReactionsApplication.getAddressManager().remove(addressReference);
+                            refresh();
+                        }
                     })
-                    .setNegativeButton(R.string.no, (dialogInterface, i) -> {
-                        //
+                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //
+                        }
                     }).show();
         }
     }

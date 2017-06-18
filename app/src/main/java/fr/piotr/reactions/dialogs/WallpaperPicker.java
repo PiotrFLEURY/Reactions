@@ -48,11 +48,16 @@ public class WallpaperPicker extends AlertDialog{
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            PhotoItem item = getItem(i);
+            final PhotoItem item = getItem(i);
             if(view==null) {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.image_picker_item, null, false);
             }
-            view.setOnClickListener(view1 -> select(item));
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    select(item);
+                }
+            });
             ((ImageView)view).setImageBitmap(ImagesManager.toThumbnailBitmap(getContext(), item.getImageID()));
             return view;
         }
